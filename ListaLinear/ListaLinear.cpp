@@ -1,5 +1,6 @@
 
 #include <iostream>
+#include <locale.h>
 using namespace std;
 
 // headers
@@ -21,6 +22,7 @@ int nElementos = 0;
 
 int main()
 {
+	setlocale(LC_ALL, "portuguese");
 	menu();
 }
 
@@ -84,7 +86,7 @@ void exibirElementos()
 {
 	if (nElementos == 0)
 	{
-		cout << " A lista esta vazia \n";
+		cout << " A lista está vazia \n";
 	}
 	else {
 		cout << "Elementos: \n";
@@ -105,7 +107,7 @@ void inserirElemento()
 
 		if (pos != -1)
 		{
-			cout << "Elemento j� esta na lista" << endl;
+			cout << "Elemento já está na lista" << endl;
 		}
 		else
 		{
@@ -123,23 +125,23 @@ void inserirElemento()
 void excluirElemento()
 {
 int valueToRemove;
-cout << "Digite o valor que quer remover";
+cout << "Digite o valor que quer remover\n";
 cin >> valueToRemove;
 int searchResult = posicaoElemento(valueToRemove);
 
 if(searchResult == -1){
-	cout << "O número digitado não está na lista";
+	cout << "O número digitado não está na lista\n";
 } else {
-	int newList[MAX];
-	nElementos--;
 	for(int i = 0; i < nElementos; i++){
-	if(i != valueToRemove){
-		newList[i] = lista[i];
+		if (lista[i] == valueToRemove) {
+			for (int j = i; j < nElementos; j++) {
+				lista[j] = lista[j + 1];
+				}
+				cout << "Elemento " << valueToRemove << " removido\n";
 			}
 		}
-	cout << newList;
 	}
-
+	nElementos--;
 }
 
 void buscarElemento()
@@ -150,11 +152,11 @@ void buscarElemento()
 	int pos = posicaoElemento(valor);
 
 	if (pos != -1) {
-		cout << "O elemento foi encontrado na posicao" << pos << endl;
+		cout << "O elemento foi encontrado na posição" << pos << endl;
 	}
 	else
 	{
-		cout << "O elemento digitado nao foi encontrado" << endl;
+		cout << "O elemento digitado não foi encontrado" << endl;
 	}
 }
 
