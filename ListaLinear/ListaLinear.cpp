@@ -140,8 +140,8 @@ if(searchResult == -1){
 				cout << "Elemento " << valueToRemove << " removido\n";
 			}
 		}
-	}
 	nElementos--;
+	}
 }
 
 void buscarElemento()
