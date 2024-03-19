@@ -105,7 +105,7 @@ void inserirElemento()
 
 		if (pos != -1)
 		{
-			cout << "Elemento j� esta na lista" << endl;
+			cout << "Elemento j� esta na lista" << endl;
 		}
 		else
 		{
@@ -122,7 +122,23 @@ void inserirElemento()
 
 void excluirElemento()
 {
+int valueToRemove;
+cout << "Digite o valor que quer remover";
+cin >> valueToRemove;
+int searchResult = posicaoElemento(valueToRemove);
 
+if(searchResult == -1){
+	cout << "O número digitado não está na lista";
+} else {
+	int newList[MAX];
+	nElementos--;
+	for(int i = 0; i < nElementos; i++){
+	if(i != valueToRemove){
+		newList[i] = lista[i];
+			}
+		}
+	cout << newList;
+	}
 
 }
 
